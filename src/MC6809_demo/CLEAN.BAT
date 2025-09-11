@@ -1,0 +1,7 @@
+DEL *.S19
+DEL *.HEX
+DEL *.LST
+DEL *.MAP
+DEL *.O
+DEL *.BIN
+DEL *.ZX0

@@ -1,0 +1,17 @@
+.program bus_interface
+.side_set 0 opt
+
+; Wait for CS (GPIO20) to go low
+
+.wrap_target
+loop:
+wait 0 gpio 20 [8]      ; wait for GPIO20 to go low
+
+in pins, 10        ; sample GPIO20–29
+push block         ; push to RX FIFO (blocking)
+
+irq nowait 0      	; trigger IRQ 0 to CPU
+
+wait 1 gpio 20     ; wait for GPIO20 to go high
+jmp loop
+.wrap

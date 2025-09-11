@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1755923019 source:c:\users\caian\desktop\projects\misc_fun_progs\glyph_art\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<omp.h>
+	<unistd.h>
+
+1756085394 source:c:\users\caian\desktop\pugvdp\glyph_art\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<omp.h>
+	<unistd.h>
+
+1756610699 source:c:\users\caian\desktop\pugvdp\util\glyph_art\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<omp.h>
+	<unistd.h>
+
