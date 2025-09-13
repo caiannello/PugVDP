@@ -25,13 +25,14 @@
 648x480 display via DVI/HDMI 
 Text display mode:
 	Each character cell has configurable background/foreground color (64 colors - RGB222) 
-	Font can be reprogrammed by the host at runtime
+	Font can be reprogrammed by the host at runtime.
+	
 	Five built-in fonts:
-		8x16 IBM VGA (80 cols x 30 rows)
-		8x16 ASCII + Semigraphics
-		8x8	 IBM CGA (80 cols x 60 rows)
-		8x8  ASCII + Semigraphics
-		8x4  semigraphics only
+	-	8x16 IBM VGA (80 cols x 30 rows)
+	-	8x16 ASCII + Semigraphics
+	-	8x8	 IBM CGA (80 cols x 60 rows)
+	-	8x8  ASCII + Semigraphics
+	-	8x4  semigraphics only
 
 ### Building PugVDP and Luke Wren's LibDVI:
 
