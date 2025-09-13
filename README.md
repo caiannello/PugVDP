@@ -45,7 +45,7 @@ In the doc folder are images of the built-in fonts. (No actual docs are yet in t
 
 ### Importing new fonts
 
-In util/conv/ is the utility used to convert font images and palettes to C source for inclusion into PugVDP.
+`util/conv/` is the utility used to convert font images and palettes to C source for inclusion into the PugVDP sourcecode.
 
 ### Building PugVDP and Luke Wren's LibDVI:
 
