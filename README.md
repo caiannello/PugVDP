@@ -55,17 +55,12 @@ If all goes well, the uf2 file will appear here:
 
 	PugVDP/src/build/pugvdp/PugVDP.uf2
 
-### Using PugVDP
-
-	See src/pugvdp/commands.h for command list and video modes
-
-#### PugVDP Bus Interface (Connecting the Raspberry Pi Pico 2 to a vintage CPU)
+### PugVDP Bus Interface
 
 Sorry, I need to document this better. My demo platform is an Adafruit Feather RP2350 with HSTX, using the available FFC HDMI accessory. 
 
-Ten contiguous GPIO pins are needed for the bus interface. *I had to remove the RGB LED and reuse its GPIO line (Pin 21) in order to achieve this!*  
+Ten contiguous GPIO pins are needed for the bus interface. *I had to remove the RGB LED and reuse its GPIO line (Pin 21) in order to achieve this!*  Pin assignments are as follows:
 
-Pin assignments:
 -	Pin 20 - Chip-select, active low.
 -	Pin 21 - A0 ( 0: Write command, 1: Write arguments / data )
 -	Pin 22 - D0
@@ -77,7 +72,7 @@ Pin assignments:
 -	Pin 28 - D6
 -	Pin 29 - D7
 
-#### PugVDP Commands
+### PugVDP Commands
 
-	See src/pugvdp/commands.h for command list and video modes
+See src/pugvdp/commands.h for command list and video modes. Currently, only the text/semigraphics mode is implemented, but I hope to add bitmap modes, tile layers, and sprites!
 
