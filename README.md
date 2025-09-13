@@ -34,7 +34,7 @@ Text display mode:
 	-	8x8  ASCII + Semigraphics
 	-	8x4  semigraphics only (80 cols x 120 rows)
 
-See the gif files in the media folder for semigraphics examples. In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.)
+In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.) There's some animated gifs in the media folder demonstrating semigraphice. The tool used to produce semigraphics images from PNG files is in util/glyph art, and some example outputs are in util/glyph_art/output .
 
 ### Building PugVDP and Luke Wren's LibDVI:
 
