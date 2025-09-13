@@ -34,7 +34,13 @@ Text display mode:
 	-	8x8  ASCII + Semigraphics
 	-	8x4  semigraphics only (80 cols x 120 rows)
 
+### Semigraphics demos
+
 In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.) There's some animated gifs in the media folder demonstrating semigraphice. The tool used to produce semigraphics images from PNG files is in util/glyph art, and some example outputs are in util/glyph_art/output .
+
+### Importing new fonts
+
+In util/conv/ is the utility used to convert font images and palettes to C source for inclusion into PugVDP.
 
 ### Building PugVDP and Luke Wren's LibDVI:
 
@@ -51,7 +57,25 @@ If all goes well, the uf2 file will appear here:
 
 ### Using PugVDP
 
+	See src/pugvdp/commands.h for command list and video modes
+
 #### PugVDP Bus Interface (Connecting the Raspberry Pi Pico 2 to a vintage CPU)
+
+Sorry, I need to document this better. My demo platform is an Adafruit Feather RP2350 with HSTX, using the available FFC HDMI accessory. 
+
+Ten contiguous GPIO pins are needed for the bus interface. *I had to remove the RGB LED and reuse its GPIO line (Pin 21) in order to achieve this!*  
+
+Pin assignments:
+-	Pin 20 - Chip-select, active low.
+-	Pin 21 - A0 ( 0: Write command, 1: Write arguments / data )
+-	Pin 22 - D0
+-	Pin 23 - D1
+-	Pin 24 - D2
+-	Pin 25 - D3
+-	Pin 26 - D4
+-	Pin 27 - D5
+-	Pin 28 - D6
+-	Pin 29 - D7
 
 #### PugVDP Commands
 
