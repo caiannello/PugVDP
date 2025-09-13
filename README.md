@@ -57,9 +57,11 @@ If all goes well, the uf2 file will appear here:
 
 ### PugVDP Bus Interface
 
-Sorry, I need to document this better. My demo platform is an Adafruit Feather RP2350 with HSTX, using the available FFC HDMI accessory. 
+Ten contiguous GPIO pins are needed for the bus interface. The starting GPIO number is specified in `src/pugvdp/defines.h` called `GPIO_BASE`. 
 
-Ten contiguous GPIO pins are needed for the bus interface. *I had to remove the RGB LED and reuse its GPIO line (Pin 21) in order to achieve this!*  Pin assignments are as follows:
+My demo platform is an Adafruit Feather RP2350 with HSTX, using the available FFC HDMI accessory, and to get the ten contiquous GPIO's, *I had to remove the RGB LED and reuse its GPIO line (Pin 21) !*. 
+
+Pin assignments are as follows:
 
 -	Pin 20 - Chip-select, active low.
 -	Pin 21 - A0 ( 0: Write command, 1: Write arguments / data )
