@@ -57,7 +57,9 @@ If all goes well, the uf2 file will appear here:
 
 ### PugVDP Bus Interface
 
-Ten contiguous GPIO pins are needed for the bus interface. The starting GPIO number is specified in `src/pugvdp/defines.h` called `GPIO_BASE`. 
+Ten contiguous GPIO pins are needed for the bus interface. The starting GPIO number is specified in `src/pugvdp/defines.h`:
+
+`#define GPIO_BASE   		    20`
 
 My demo platform is an Adafruit Feather RP2350 with HSTX, using the available FFC HDMI accessory, and to get the ten contiquous GPIO's, *I had to remove the RGB LED and reuse its GPIO line (Pin 21) !*. 
 
