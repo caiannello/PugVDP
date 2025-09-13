@@ -38,6 +38,8 @@ Text display mode:
 
 In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.) There's some animated gifs in the media folder demonstrating semigraphics, and the tool used to produce them from PNG files is in `util/glyph art`. Some example outputs are in `util/glyph_art/output` .
 
+<img src="https://github.com/caiannello/PugVDP/blob/main/media/torii_semigraphics_8x8_8x4_8x2_8x1_4x2.gif?raw=true" width="640" height="480" />
+
 ### Importing new fonts
 
 In util/conv/ is the utility used to convert font images and palettes to C source for inclusion into PugVDP.
@@ -80,3 +82,6 @@ GPIO assignments are as follows:
 
 See src/pugvdp/commands.h for command list and video modes. Currently, only the text/semigraphics mode is implemented, but I hope to add bitmap modes, tile layers, and sprites!
 
+### Demo code for MC6309 CPU
+
+`/src/MC6809_demo/PUGVDP_DEMO.ASM`
