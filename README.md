@@ -34,6 +34,9 @@ Text display mode:
 	-	8x8  ASCII + Semigraphics
 	-	8x4  semigraphics only (80 cols x 120 rows)
 
+<img src="https://github.com/caiannello/PugVDP/blob/main/media/lorem.png?raw=true" width="640" height="480" />
+<img src="https://github.com/caiannello/PugVDP/blob/main/media/multicolor.png?raw=true" width="640" height="480" />
+
 ### Semigraphics demos
 
 In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.) There's some animated gifs in the media folder demonstrating semigraphics, and the tool used to produce them from PNG files is in `util/glyph art`. Some example outputs are in `util/glyph_art/output` .
