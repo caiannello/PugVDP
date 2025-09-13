@@ -20,7 +20,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 ```
-#### Current Features:
+### Current Features:
 
 648x480 display via DVI/HDMI 
 Text display mode:
@@ -36,7 +36,7 @@ Text display mode:
 
 ### Semigraphics demos
 
-In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.) There's some animated gifs in the media folder demonstrating semigraphice. The tool used to produce semigraphics images from PNG files is in util/glyph art, and some example outputs are in util/glyph_art/output .
+In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.) There's some animated gifs in the media folder demonstrating semigraphics, and the tool used to produce them from PNG files is in `util/glyph art`. Some example outputs are in `util/glyph_art/output` .
 
 ### Importing new fonts
 
@@ -61,20 +61,20 @@ Ten contiguous GPIO pins are needed for the bus interface. The starting GPIO num
 
 `#define GPIO_BASE   		    20`
 
-My demo platform is an Adafruit Feather RP2350 with HSTX, using the available FFC HDMI accessory, and to get the ten contiquous GPIO's, *I had to remove the RGB LED and reuse its GPIO line (Pin 21) !*. 
+My demo platform is an Adafruit Feather RP2350 with HSTX, using the available FFC HDMI accessory. **I had to remove the RGB LED and reuse its GPIO line (GPIO21) to get ten contiguous GPIO's !**. 
 
-Pin assignments are as follows:
+GPIO assignments are as follows:
 
--	Pin 20 - Chip-select, active low.
--	Pin 21 - A0 ( 0: Write command, 1: Write arguments / data )
--	Pin 22 - D0
--	Pin 23 - D1
--	Pin 24 - D2
--	Pin 25 - D3
--	Pin 26 - D4
--	Pin 27 - D5
--	Pin 28 - D6
--	Pin 29 - D7
+-	GPIO20 - /CS ( Chip-select, active low. )
+-	GPIO21 - A0 ( 0: Write command, 1: Write data/args )
+-	GPIO22 - D0
+-	GPIO23 - D1
+-	GPIO24 - D2
+-	GPIO25 - D3
+-	GPIO26 - D4
+-	GPIO27 - D5
+-	GPIO28 - D6
+-	GPIO29 - D7
 
 ### PugVDP Commands
 
