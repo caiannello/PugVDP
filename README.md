@@ -32,7 +32,9 @@ Text display mode:
 	-	8x16 ASCII + Semigraphics
 	-	8x8	 IBM CGA (80 cols x 60 rows)
 	-	8x8  ASCII + Semigraphics
-	-	8x4  semigraphics only
+	-	8x4  semigraphics only (80 cols x 120 rows)
+
+See the gif files in the media folder for semigraphics examples. In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.)
 
 ### Building PugVDP and Luke Wren's LibDVI:
 
