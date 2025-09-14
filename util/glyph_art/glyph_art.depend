@@ -26,3 +26,12 @@
 	<omp.h>
 	<unistd.h>
 
+1757883322 source:c:\users\caian\documents\github\pugvdp\util\glyph_art\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<omp.h>
+	<unistd.h>
+
