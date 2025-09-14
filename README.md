@@ -25,7 +25,8 @@
 
 648x480 display via DVI/HDMI 
 Text display mode:
-	Each character cell has configurable background/foreground color (64 colors - RGB222) 
+	Each character cell has configurable background/foreground color (64 colors - RGB222). IBM-style cursor with adjustable height, visibility, and blink rate.
+
 	Font can be reprogrammed by the host at runtime.
 	
 	Five built-in fonts:
@@ -34,6 +35,7 @@ Text display mode:
 	-	8x8	 IBM CGA (80 cols x 60 rows)
 	-	8x8  ASCII + Semigraphics
 	-	8x4  semigraphics only (80 cols x 120 rows)
+
 
 <img src="https://github.com/caiannello/PugVDP/blob/main/media/lorem.png?raw=true" width="640" height="480" />
 <img src="https://github.com/caiannello/PugVDP/blob/main/media/multicolor.png?raw=true" width="640" height="480" />
