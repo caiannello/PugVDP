@@ -10,8 +10,9 @@
 // Started July 2025 by Craig Iannello
 //
 // This project started with Luke's colour_terminal demo. The font was 
-// changed to an 8x16 IBM VGA font, and a PIO-based 8-bit bus was bolted-on 
-// described below, and command handlers and video modes were added. 
+// changed to an 8x16 IBM VGA font, and a PIO-based 8-bit bus interface 
+// was bolted-on, described below, and command handlers and video modes 
+// were added. 
 //
 // The intent is to use an RP2350, hooked directly to the bus of the 
 // Pugputer 6309, to act as the display chip.

@@ -24,8 +24,8 @@
 #define FNAME "appleiigs_wiki_dither"
 #define IW 640
 #define IH 480
-#define GW 8
-#define GH 1
+#define GW 4
+#define GH 2
 
 // If no FNAME (input filename) is specified above,
 // this util will batch-convert all the files listed
