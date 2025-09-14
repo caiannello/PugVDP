@@ -15,6 +15,20 @@ SF = 1
 screen=pygame.display.set_mode([WW*SF,HH*SF])#,flags=pygame.FULLSCREEN)
 pygame.display.set_caption("Img conv...")
 
+'''
+isurf = pygame.image.load('../input/ironman_rgb332.png')
+imgbytes = pygame.image.tobytes(isurf,"RGB")
+pixels = []
+for i in range(0,len(imgbytes),3):
+    r = imgbytes[i+0]*7//255
+    g = imgbytes[i+1]*7//255
+    b = imgbytes[i+2]*3//255
+    c = (r<<5) | (g<<2) | b
+    pixels.append( f'0x{c:02x}')
+print(', '.join(pixels))
+exit()
+'''
+
 def main():
     test = False
     if len(sys.argv)!=4:
