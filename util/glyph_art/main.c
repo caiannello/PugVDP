@@ -1,3 +1,18 @@
+//
+// given a 640x480 input image and by specifying a font size,
+// makes an approximation of the image for display in PugVDP's
+// text / semigraphics mode.
+//
+// Font is specified using the GW & GH defines, below.
+// Valid choices are: (16x16, 16x8, 8x8, 8x2, or 8x1)
+//
+// The text mode has only 6-bit (RGB222) color per
+// foreground / background of each character cell, so
+// best results are achieved by reducing the color depth
+// of the input image (i.e. in GIMP) to RGB222 with
+// dithering.
+//
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -11,6 +26,10 @@
 #define IH 480
 #define GW 8
 #define GH 1
+
+// If no FNAME (input filename) is specified above,
+// this util will batch-convert all the files listed
+// here:
 
 const char * const fnames[] = {
   "appleiigs_wiki_dither",
@@ -76,6 +95,8 @@ const char * fname = fnames[0];
 uint8_t truth_bytes[TRUTH_SZ];
 uint8_t perms_bytes[PERMS_SZ];
 
+// loads a binary file to the specified dst pointer
+
 int load_file(const char *fname, size_t fsz, uint8_t *dst)
 {
   FILE* infile;
@@ -100,6 +121,11 @@ int load_file(const char *fname, size_t fsz, uint8_t *dst)
   return 0;
 }
 
+// Searches all permutations of font character,
+// fg color, bg color to find the best match to
+// the provided cell bitmap.  ( 256 glyphs *
+// 64 bg colors * 64 fg colors ) = 4096 combos
+
 uint64_t find_match(uint8_t *truth_bytes)
 {
     uint32_t best_idx=0;
@@ -109,6 +135,11 @@ uint64_t find_match(uint8_t *truth_bytes)
     uint8_t *p = perms_bytes;
     for(uint32_t pidx = 0 ; pidx<(256*64*64);pidx++)
     {
+      // these are for limiting the color range or
+      // character selection for the search.
+      // like, if you wanted to use only
+      // black & white alphanumeric chars, for example.
+
       //int gidx = pidx/4096;
       //int cidx = pidx & 4095;
       //int fg = cidx&0b111111;
@@ -146,7 +177,10 @@ int main()
 
   // for given cell size (gw x gh),
   // load as bytes all 4096 permutations of
-  // glyph (256), bg color (64), and fg color (64)
+  // glyph (256), bg color (64), and fg color (64).
+  // If not found, util/makefonts.py is run to
+  // generate them.
+
   sprintf(cmdline, TEMP_DIR "%s", PERMFILE);
   if(load_file(cmdline, PERMS_SZ, perms_bytes))
   {
@@ -174,6 +208,10 @@ int main()
     fidx++;
     #endif // FNAME
 
+    // load input image thats been converted from PNG to char-cell sized
+    // RGB-888 binary blobs. If not found, util/conving.py is run
+    // to generate the file.
+
     sprintf(cmdline,TEMP_DIR "%s_%dx%d_truth_bytes.bin",fname,gw,gh);
     //printf("truth load name: '%s'\n",cmdline);
     if(load_file(cmdline, TRUTH_SZ, truth_bytes))
@@ -189,24 +227,28 @@ int main()
       }
     }
 
-    // for each cell of original image, find the glyph permutation
-    // that matches the image most closely, and note it.
 
-    //printf("\n\nStarting exhaustive search...\n");
+    // We do an exhaustive search per character cell, among 4096 combinations
+    // of (char, fg, bg) to find the closest match to input image. This
+    // is highly parallelizable, so OpenMP is used to speed things up.
+
     omp_set_num_threads(24);
+
+    // some conversion statistics
+
     uint64_t tot_dif = 0;
     uint32_t glyph_cts[256] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,};
     uint64_t glyph_sums[256] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,};
-    for(int y=0;y<NUM_ROWS;y++)
+
+    for(int y=0;y<NUM_ROWS;y++)  // for each character row
     {
-      #pragma omp parallel for       // Using OpenMP to parallelize this loop
+      #pragma omp parallel for       // for each column (Using OpenMP to batch things)
       for(int x=0;x<NUM_COLS;x++)
       {
         uint64_t midx = find_match(truth_bytes+(x*CELL_SZ_BYTES)+(y*NUM_COLS*CELL_SZ_BYTES));
         uint32_t perm_idx = midx&0xffffffff;
         uint8_t glyph_idx = perm_idx / 4096;
         uint32_t cell_dif = (midx>>32)&0xffffffff;
-
         glyph_cts[glyph_idx]++;
         glyph_sums[glyph_idx]+=cell_dif;
         uint16_t cell_idx = x+y*NUM_COLS;
@@ -215,20 +257,24 @@ int main()
         tot_dif += cell_dif;
       }
     }
-    // write the NUM_COLSxNUM_ROWS uint32_t permutation indexes
+
+    // write the NUM_COLSxNUM_ROWS uint32_t permutation indexes we found.
+    // Will be converted to char,bg,fg by the viewer py utility.
     sprintf(cmdline, OUTPUT_DIR "%dx%d_%s_glyph_idxs.bin",gw,gh, fname);
     //printf("Writing glyphidxs file '%s'...\n",cmdline);
     FILE *outfile = fopen(cmdline,"wb");
     fwrite(sol,1,(NUM_COLS*NUM_ROWS*4),outfile);
     fclose(outfile);
 
+    // save a matrix of cell differences for dev review
     sprintf(cmdline, OUTPUT_DIR "%dx%d_%s_cell_difs.bin",gw,gh, fname);
     //printf("Writing cell_difs file '%s'...\n",cmdline);
     outfile = fopen(cmdline,"wb");
     fwrite(cell_difs,1,(NUM_COLS*NUM_ROWS*4),outfile);
     fclose(outfile);
 
-    // show glyph histogram
+    // show glyph histogram - to see which characters were most useful
+    // when approximating the image, as well as other statistics
     uint8_t gi = 0;
     printf("     ");
     for(int x=0;x<16;x++)
@@ -244,7 +290,6 @@ int main()
       }
       printf("\n");
     }
-
     uint64_t sz_orig = (IW*IH);
     uint64_t sz_new = (NUM_ROWS*NUM_COLS*3);
     float sz_savings = (float)(sz_orig-sz_new) * 100.0 / (float)sz_orig;

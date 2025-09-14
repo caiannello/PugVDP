@@ -182,7 +182,10 @@ def add_pseudographics(src_file, do_expand_set, gw, gh, octels, bit_pix_wid, bit
         yofs = 0
     pattern_idxs = []    
     for gidx in range(0,256):
-        if (gidx not in pattern_idxs) and (gidx^0xff not in pattern_idxs):
+        # 8x1 font gets all 256 bit patterns, because we can.
+        # Others get only half the permutations, leaving out 
+        # any that could be achieved by swapping BG and FG colors.
+        if ((gw, gh) == (8,1)) or ((gidx not in pattern_idxs) and (gidx^0xff not in pattern_idxs)):
             pattern_idxs.append(gidx)
             pattern = b'\x00\x00\x00\x00' * gw * gh
             for i in range(0,len(octels)):
