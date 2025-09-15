@@ -41,6 +41,10 @@ Text display mode:
 <img src="https://github.com/caiannello/PugVDP/blob/main/media/lorem.png?raw=true" width="640" height="480" />
 <img src="https://github.com/caiannello/PugVDP/blob/main/media/multicolor.png?raw=true" width="640" height="480" />
 
+### Importing new fonts
+
+`util/conv/` is the utility used to convert font images and palettes to C source for inclusion into the PugVDP sourcecode. Fonts can also be reprogrammed by the host CPU, as shown in the included assembly-language demo for Motorola MC6809-compatible CPU's.
+
 ### Semigraphics demos
 
 In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.) There's some animated gifs in the media folder demonstrating semigraphics, and the tool used to produce them from PNG files is in `util/glyph art`. Some example outputs are in `util/glyph_art/output` .
@@ -48,10 +52,6 @@ In the doc folder are images of the built-in fonts. (No actual docs are yet in t
 **This is an animated gif showing how an image can by represented by various fonts in text mode:**
 
 <img src="https://github.com/caiannello/PugVDP/blob/main/media/torii_semigraphics_8x8_8x4_8x2_8x1_4x2.gif?raw=true" width="640" height="480" />
-
-### Importing new fonts
-
-`util/conv/` is the utility used to convert font images and palettes to C source for inclusion into the PugVDP sourcecode.
 
 ### Planned Features
 
