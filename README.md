@@ -55,7 +55,7 @@ In the doc folder are images of the built-in fonts. (No actual docs are yet in t
 
 ### Planned Features
 
-Have beenhaving fun with semigraphics, but I fully intend to add some proper bitmapped graphics modes with various color depths and commands to draw lines and shapes. I also want to add a tilemap mode to support game dev. (Multiple independently scrollable tile and sprite layers.)
+Been having too much fun with semigraphics, but intend to add some proper bitmapped graphics modes with various color depths and commands to draw lines and shapes. I also want to add a tilemap mode to support game dev. (Multiple independently scrollable tile and sprite layers.)
 
 ### Building PugVDP and Luke Wren's LibDVI:
 
