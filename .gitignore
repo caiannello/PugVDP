@@ -1,2 +1,2 @@
 src/build/_deps/picotool-src/
-util/glyph_art/temp/*
+util/glyph_art/temp/*.bin
