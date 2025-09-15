@@ -25,7 +25,7 @@
 
 648x480 display via DVI/HDMI 
 Text display mode:
-	Each character cell has configurable background/foreground color (64 colors - RGB222). IBM-style cursor with adjustable height, visibility, and blink rate. The font can be reprogrammed by the host at runtime, and there are six build-in fonts:
+	Each character cell has configurable background/foreground color (64 colors - RGB222). IBM-style cursor with adjustable height, visibility, and blink rate. The font can be reprogrammed by the host at runtime, and **there are six built-in fonts:**
 
 	-	8x16 IBM VGA (80 cols x 30 rows)
 	-	8x16 ASCII + Semigraphics
