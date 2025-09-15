@@ -1,5 +1,0 @@
-/home/user/PugVDP/src/build/pioasm-install/pioasm/pioasm
-/home/user/PugVDP/src/build/pioasm-install/pioasm/pioasmTargets.cmake
-/home/user/PugVDP/src/build/pioasm-install/pioasm/pioasmTargets-release.cmake
-/home/user/PugVDP/src/build/pioasm-install/pioasm/pioasmConfig.cmake
-/home/user/PugVDP/src/build/pioasm-install/pioasm/pioasmConfigVersion.cmake

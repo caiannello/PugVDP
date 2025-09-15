@@ -1,2 +1,3 @@
 src/build/_deps/picotool-src/
 util/glyph_art/temp/*.bin
+util/tiles/temp/*.bin
