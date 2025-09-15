@@ -21,11 +21,11 @@
 #include <omp.h>      // OpenMP multiprocessing library
 #include <unistd.h>
 
-#define FNAME "appleiigs_wiki_dither"
+#define FNAME "ironman"
 #define IW 640
 #define IH 480
-#define GW 4
-#define GH 2
+#define GW 8
+#define GH 1
 
 // If no FNAME (input filename) is specified above,
 // this util will batch-convert all the files listed

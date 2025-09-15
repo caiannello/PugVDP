@@ -11,11 +11,12 @@ uint8_t  font_buf[16*1*FONT_N_CHARS];  // buffers rom font so it can be modified
                                        // big enough for largest font size: 8x16 * 256
 uint8_t   text_font_char_width, 
           text_font_char_height;
-uint8_t   text_char_cols, text_char_rows;
+uint8_t   text_char_cols;
+uint16_t  text_char_rows;
 uint16_t  text_color_plane_size_words; // = (text_char_rows * text_char_cols * 4 / 32);
 
-char      text_buf[120 * 80 ];  // worst-case sizes for buffers
-uint32_t  colorbuf[3 * (120 * 80 * 4 / 32) ]; // .||.
+char      text_buf[480 * 80 ];  // worst-case sizes for buffers
+uint32_t  colorbuf[3 * (480 * 80 * 4 / 32) ]; // .||.
 
 
 uint8_t *font_set_pointer = font_buf;   // used when host reprogramming font

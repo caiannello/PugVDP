@@ -40,6 +40,8 @@ FONT_8X8_CGA               EQU      16
 FONT_8X8_SEMIGRAPHICS      EQU      17
 
 FONT_8X4_SEMIGRAPHICS      EQU      32
+FONT_8X1_SEMIGRAPHICS      EQU      64
+
 
 ;------------------------------------------------------------------------------
 ; PUGVDP COMMAND REGISTERS

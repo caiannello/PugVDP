@@ -105,8 +105,8 @@ with open(bgfile,'wb') as bgf:
             pygame.display.update()   
 pygame.image.save(screen, pngfile)   
 
-os.unlink(binfile)                  
-os.unlink(asmfile)                  
+#os.unlink(binfile)                  
+#os.unlink(asmfile)                  
 os.unlink(bgfile)                  
 os.unlink(fgfile)                  
 os.unlink(glfile)                  

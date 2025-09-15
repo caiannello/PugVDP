@@ -28,23 +28,10 @@ void data_receive(uint16_t *dat, uint sz);
 // PugVDP Video Modes
 // ----------------------------------------------------------------------------
 typedef enum {
-  MODE_TEXT    = 0, // (80x30, 80x60, 80x120) Text rgb222 fg/bg per char cell
-
+  MODE_TEXT    = 0,     // (80x30, 80x60, 80x120, 80x240) Text rgb222 fg/bg per char cell
+  MODE_BITMAP_HIRES,    // 640x480 8 bpp palettized
+  MODE_BITMAP_LORES,    // 320x240 16 bpp rgba5551
   // Not yet implemented:
-
-  MODE_BMP_HIRES_PAL1,   // 640x480 1-bpp   palette: rgba5551 x 2
-  MODE_BMP_HIRES_PAL2,   // 640x480 2-bpp   palette: rgba5551 x 4
-  MODE_BMP_HIRES_PAL4,   // 640x480 4-bpp   palette: rgba5551 x 16
-  MODE_BMP_HIRES_PAL8,   // 640x480 8-bpp   palette: rgba5551 x 256
-  MODE_BMP_HIRES_RGB222, // 640x480 8-bpp   flat: rgba2221
-  MODE_BMP_HIRES_RGB332, // 640x480 8-bpp   flat: rgba2321
-  MODE_BMP_LORES_PAL1,   // 320x240 1-bpp   palette: rgba5551 x 2
-  MODE_BMP_LORES_PAL2,   // 320x240 2-bpp   palette: rgba5551 x 4
-  MODE_BMP_LORES_PAL4,   // 320x240 4-bpp   palette: rgba5551 x 16
-  MODE_BMP_LORES_PAL8,   // 320x240 8-bpp   palette: rgba5551 x 256
-  MODE_BMP_LORES_RGB222, // 320x240 8-bpp   flat: rgba2221
-  MODE_BMP_LORES_RGB332, // 320x240 8-bpp   flat: rgba2321
-  MODE_BMP_LORES_RGB555, // 320x240 16-bpp  flat: rgba5551
   MODE_TILEMAP_HIRES,    // 640x480 tilemaps & sprites
   MODE_TILEMAP_LORES,    // 320x240 tilemaps & sprites
 
@@ -65,6 +52,7 @@ typedef enum {
                                     // 16:  FONT_8X8_CGA
                                     // 17:  FONT_8X8_SEMIGRAPHICS 
                                     // 32:  FONT_8X4_SEMIGRAPHICS
+                                    // 64:  FONT_8X1_SEMIGRAPHICS  
 #define TEXT_COLOR_SET        0x11  // (for putc, printc, define_area, clear, etc)
                                     // arg0: BG (RGB222),
                                     // arg1: FG (RGB222)                              

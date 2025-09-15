@@ -12,7 +12,9 @@ fonts = [
 	('Pug_Font_8x16.png',										'semi',	8,16,128+8,0),
 	('ibm_cga_8x8.png',											'cga',	8,8,0,256+8),
 	('Pug_Font_8x8.png',										'semi',	8,8,128+8,256+8),
-	('Pug_Font_8x4.png',										'semi',	8,4,0,256+128+16)  
+	('Pug_Font_8x4.png',										'semi',	8,4,0,256+128+16),  
+	('8x1.png',															'semi',	8,1,128+8,256+128+16)  
+
 ]
 
 # 256-color Palette from the game "Sonic Robo Blast 2"

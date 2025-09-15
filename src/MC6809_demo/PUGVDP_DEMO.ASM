@@ -75,7 +75,7 @@ DLOOP
 CLEARHOME:
     LDA  #TEXT_CLEAR        ; clear screen
     STA  PICO_R0
-    LDA  #TEXT_HOME         ; cursor home
+    LDA  #TEXT_HOME        ; cursor home
     STA  PICO_R0
     RTS
 ;------------------------------------------------------------------------------
@@ -102,7 +102,7 @@ MSGLOOP3
     RTS    
 ;------------------------------------------------------------------------------
 PRINTWORD:
-    ; print "Gigidy." without linefeed
+    ; print a bunch of null-terminated strings
     LDX  #MSG_WORD
 MSGLOOP2
     JSR  PUTS
@@ -144,7 +144,13 @@ NOT_CSEMI
     STA  CUR_TEXTMODE   ; Mode 32: 8x4 Semigraphics
     LDA  #120           ; 120 rows/screen
     BRA  T_SET_MODE
-NOT_MODE32:             ; Unknown font
+NOT_MODE32:
+    CMPA #FONT_8X1_SEMIGRAPHICS
+    LBNE NOT_MODE64
+    STA  CUR_TEXTMODE   ; Mode 64: 8x1 Semigraphics
+    LDA  #240           ; 240 rows/screen
+    BRA  T_SET_MODE
+NOT_MODE64:    
     RTS
 T_SET_MODE:
     STA  CUR_ROWS       ; Remember screen height in rows
@@ -300,12 +306,23 @@ FONTLOOP
     STA   PICO_R1         
     CMPX  #ENDFONT
     BNE   FONTLOOP
+    ;LDA  #4          ; set cursor color to black
+    ;STA  PICO_R0
+    ;LDA  #$00
+    ;STA  PICO_R1
+
     LBRA  ENDS
 NOQ
     CMPA #' '       ; reset font to default
     BNE  NOSP
     LDA  #$1F
     STA  PICO_R0
+    ;LDA  #12
+    ;STA  PICO_R1
+    ;LDA  #4          ; set cursor color to white
+    ;STA  PICO_R0
+    ;LDA  #$FF
+    ;STA  PICO_R1
     LBRA ENDS
 NOSP
     CMPA  #'x'       ; set text area to subset of screen
@@ -364,11 +381,19 @@ NOV
     LBRA ENDS
 NOB    
     CMPA #'n'       ; do 8x4 font art
-    BNE  ENDS
+    BNE  NON
     LDA  #FONT_8X4_SEMIGRAPHICS
     LBSR SET_TEXTMODE    
     LDX  #GLYPHART3
     LBSR SHOW_GLYPHART
+    LBRA ENDS    
+NON    
+    CMPA #'h'       ; do 8x1 font art
+    BNE  ENDS
+    LDA  #FONT_8X1_SEMIGRAPHICS
+    LBSR SET_TEXTMODE    
+    ;LDX  #GLYPHART4
+    ;LBSR SHOW_GLYPHART
     LBRA ENDS    
 ENDS    
 
