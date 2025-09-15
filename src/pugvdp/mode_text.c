@@ -324,7 +324,7 @@ void text_reset(uint8_t* arg_bytes, uint16_t sz, bool first_data)
   if(!sz)
     return;
   uint8_t arg = arg_bytes[0];
-  
+  vdp_video_mode = MODE_TEXT;
   // look for specified font idx and load it up if found.
   for(int i = 0 ; i < NUM_ROM_FONTS; i++)
   {
@@ -659,10 +659,17 @@ void text_test(uint8_t* arg_bytes, uint16_t sz, bool first_data)
   } 
 }
 // ----------------------------------------------------------------------------
+void set_mode(uint8_t* arg_bytes, uint16_t sz, bool first_data)
+{
+  if(sz)
+    vdp_video_mode = arg_bytes[0];
+}
+// ----------------------------------------------------------------------------
 void text_init(void)
 {
 
   //           cmd_number    initial_arg_sz   handler_function
+  command_init(MODE,                  1,      set_mode);  
   command_init(TEXT_RESET,            1,      text_reset);
   command_init(TEXT_SET_TAB,          1,      text_set_tab);
   command_init(TEXT_SET_CURSOR_SIZE,  1,      text_set_cursor_size);

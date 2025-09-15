@@ -36,6 +36,9 @@ typedef enum {
   MODE_TILEMAP_LORES,    // 320x240 tilemaps & sprites
 
   } t_vidmode;  
+
+extern t_vidmode vdp_video_mode;
+
 // ----------------------------------------------------------------------------
 // Command register names and addresses
 // ----------------------------------------------------------------------------
@@ -52,7 +55,7 @@ typedef enum {
                                     // 16:  FONT_8X8_CGA
                                     // 17:  FONT_8X8_SEMIGRAPHICS 
                                     // 32:  FONT_8X4_SEMIGRAPHICS
-                                    // 64:  FONT_8X1_SEMIGRAPHICS  
+                                    // 64:  FONT_8X1_SEMIGRAPHICS
 #define TEXT_COLOR_SET        0x11  // (for putc, printc, define_area, clear, etc)
                                     // arg0: BG (RGB222),
                                     // arg1: FG (RGB222)                              

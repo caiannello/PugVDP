@@ -7,7 +7,10 @@
 
 // ----------------------------------------------------------------------------
 void bmp_init();
-void bmp_rasterize_screen();
+void bmp_hires_rasterize_screen(struct dvi_inst *inst);
+void bmp_lores_rasterize_screen(struct dvi_inst *inst);
+
+void bmp_test(void);
 
 ///////////////////////////////////////////////////////////////////////////////
 // EOF

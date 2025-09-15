@@ -27,6 +27,7 @@ const char __in_flash() font_8x1_semi[];
 #define FONT_8X4_SEMIGRAPHICS      32
 #define FONT_8X1_SEMIGRAPHICS      64
 
+
 typedef struct {
 	int	font_idx, 
 		char_width, char_height, 
@@ -42,7 +43,7 @@ const t_fontdef ROM_FONTS[ ] = {
 		{	FONT_8X8_CGA,			8,	8,	32,	6,	7, 	font_8x8_cga },
 		{	FONT_8X8_SEMIGRAPHICS,	8,	8,	32,	6,	7, 	font_8x8_semi },
 		{	FONT_8X4_SEMIGRAPHICS,	8,	4,	12,	0,	7, 	font_8x4_semi },
-    { FONT_8X1_SEMIGRAPHICS,  8,  1,  0, 0,  1,  font_8x1_semi },    
+    	{ FONT_8X1_SEMIGRAPHICS,  8,  1,  0, 0,  1,  font_8x1_semi },    
 	};
 
 #define NUM_ROM_FONTS (sizeof(ROM_FONTS) / sizeof(t_fontdef))

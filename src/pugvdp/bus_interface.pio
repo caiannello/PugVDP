@@ -5,13 +5,11 @@
 
 .wrap_target
 loop:
-wait 0 gpio 20 [8]      ; wait for GPIO20 to go low
-
-in pins, 10        ; sample GPIO20–29
-push block         ; push to RX FIFO (blocking)
-
+wait 0 gpio 20 [8] 	; wait for GPIO20 to go low
+in pins, 10         ; sample GPIO20–29
+;push block         ; push to RX FIFO (blocking)
+push				; push to RX FIFO
 irq nowait 0      	; trigger IRQ 0 to CPU
-
-wait 1 gpio 20     ; wait for GPIO20 to go high
+wait 1 gpio 20 [2]  ; wait for GPIO20 to go high
 jmp loop
 .wrap

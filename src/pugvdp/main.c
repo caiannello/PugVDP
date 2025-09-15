@@ -54,6 +54,12 @@ void core1_main()
       case MODE_TEXT:
         text_rasterize_screen();
         break;
+      case MODE_BITMAP_HIRES:
+        bmp_hires_rasterize_screen(&dvi0);
+        break;
+      case MODE_BITMAP_LORES:
+        bmp_lores_rasterize_screen(&dvi0);
+        break;
       default:
         break;
     }
@@ -133,6 +139,11 @@ int __not_in_flash("main") main()
 
   // init text display mode
   text_init();
+  
+  // init bitmap display mode
+  bmp_init();
+
+  //bmp_test();
 
   // Start up the DVI display generator
   hw_set_bits(&bus_ctrl_hw->priority, BUSCTRL_BUS_PRIORITY_PROC1_BITS);
@@ -151,9 +162,8 @@ int __not_in_flash("main") main()
           dumb_tail=0;
       }
       if(sz)
-      {
-        data_receive(dumb_buf, sz);  // and pass to handler in commands.c .        
-      }
+        data_receive(dumb_buf, sz);  // and pass to handler in commands.c .
+
     } else
     {
       __wfi();  // else, sleep until next interrupt.
