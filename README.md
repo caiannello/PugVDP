@@ -57,6 +57,8 @@ In the doc folder are images of the built-in fonts. (No actual docs are yet in t
 
 I've been having too much fun with semigraphics, but I intend to add some proper bitmapped graphics modes with commands to draw lines and shapes at various color depths. I also want to add a tiles & sprites mode to support game development. ( Hoping to have SNES-level graphics, with independently scrollable tile layers and multiple sprites.)
 
+Also, the Pi Pico 2 adds some very helpful hardware support (called HSTX) for generating video signals with less CPU impact. This feature is not yet used, but should free up the CPU for more fun video modes and features.
+
 ### Building PugVDP and Luke Wren's LibDVI:
 
 Note, the Raspberry pi pico SDK must be installed, per their instructions. In my case, 
