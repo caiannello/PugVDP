@@ -148,7 +148,7 @@ NOT_MODE32:
     CMPA #FONT_8X1_SEMIGRAPHICS
     LBNE NOT_MODE64
     STA  CUR_TEXTMODE   ; Mode 64: 8x1 Semigraphics
-    LDA  #240           ; 240 rows/screen
+    LDA  #240           ; actually 480 rows/screen! need to realloc this var
     BRA  T_SET_MODE
 NOT_MODE64:    
     RTS

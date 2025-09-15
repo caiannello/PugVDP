@@ -63,15 +63,15 @@ typedef enum {
                                     //       0: no blink!
 #define TEXT_CURSOR_RESET     0x16  // Reset cursor attributes to defaults
 #define TEXT_AREA_DEFINE      0x17  // Sets active area for printing and scrolling
-                                    // arg0: screen x (0..39/79),
-                                    // arg1: screen y (0..14/29),
-                                    // arg2: area width,
-                                    // arg3: area height
+                                    // arg0: uint8 screen x (0..39/79),
+                                    // arg1: uint16 screen y (0..14/29),
+                                    // arg2: uint8 area width,
+                                    // arg3: uint16 area height
 #define TEXT_CLEAR            0x18  // clears active area to current color
 #define TEXT_HOME             0x19  // same as TEXT_GOTOXY(0,0)
 #define TEXT_GOTOXY           0x1a  // Position cursor within active area.
-                                    // arg0: curs x,
-                                    // arg1: curs y
+                                    // arg0: uint8 curs x,
+                                    // arg1: uint16 curs y
 #define TEXT_PUTC             0x1b  // Each arg byte is written to active area,
                                     // advancing cursor, with wraparound to top.
                                     // (No control codes are handled.)
@@ -80,7 +80,7 @@ typedef enum {
                                     // scroll up past area bottom.
                                     // (Note an LF is treated as LF + CR.)
 #define TEXT_SCROLL_H         0x1d  // arg0: int8 num area cols (positive: left)
-#define TEXT_SCROLL_V         0x1e  // arg0: int8 num area lines (positive: up)
+#define TEXT_SCROLL_V         0x1e  // arg0: int16 num area lines (positive: up)
 #define TEXT_FONT_RESET       0x1f  // resets current font to built-in 8x16 font
 #define TEXT_FONT_SET         0x20  // allows font to be reprogrammed:
                                     // arg0: starting character code X (0..255),

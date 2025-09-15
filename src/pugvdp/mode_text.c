@@ -25,7 +25,7 @@ uint8_t  font_set_row_ct = 0;  // for counting glyph rows that were set (0..15) 
 uint8_t     text_tab_size = TEXT_DEFAULT_TAB_SZ; // tab width in spaces
                                         // cursor (row, col) on text screen,
 uint8_t     text_curs_x = 0;            // always in relation to screen (0,0),
-uint8_t     text_curs_y = 0;            // regardless of active area setting.
+uint16_t     text_curs_y = 0;            // regardless of active area setting.
 bool        text_curs_vis = true;       // true: show, false: hide
 
 uint8_t     text_curs_row0;             // cursor starting row within cell 0..(cell_h-1)
@@ -42,7 +42,7 @@ uint8_t     text_curs_state = true;     // true: is blinked on, false: is blinke
 uint8_t     text_area_x = 0;
 uint8_t     text_area_y = 0;
 uint8_t     text_area_w = 80;
-uint8_t     text_area_h = 30;
+uint16_t     text_area_h = 30;
 // Colors used when clearing an area or outputting new text (RGB222)
 // todo: use these colors when showing cursor. Cursor currently uses whatever
 // colors are assigned to the cell it is on.
@@ -54,7 +54,7 @@ const char * text_rom_font = NULL;  // points to most recently-used rom font
 // refreshes the text mode screen - called 60 times per second (hopefully).
 inline void text_rasterize_screen(void)
 {
-  uint8_t   last_char_cell_y = 255;
+  uint16_t   last_char_cell_y = 255;
   bool curs_row = false;  // true while rasterizing row containing cursor
 
   // check if time to toggle cursor
@@ -104,8 +104,8 @@ inline void text_rasterize_screen(void)
   // start rasterizing all the scanlines
   for (uint y = 0; y < FRAME_HEIGHT; ++y) 
   {
-    uint8_t char_cell_y = y / text_font_char_height;
-    uint8_t char_cell_row = y % text_font_char_height;
+    uint16_t char_cell_y = y / text_font_char_height;
+    uint16_t char_cell_row = y % text_font_char_height;
     if (char_cell_y!=last_char_cell_y)   // if starting a new text row,
     {
       last_char_cell_y = char_cell_y;
@@ -294,10 +294,10 @@ void text_clear(uint8_t* arg_bytes, uint16_t sz, bool first_data)
 //
 void text_gotoxy(uint8_t* arg_bytes, uint16_t sz, bool first_data)
 {
-  if(sz<2)
+  if(sz<3)
     return;
   uint8_t x = *(arg_bytes+0);
-  uint8_t y = *(arg_bytes+1);
+  uint16_t y = *(uint16_t*)(arg_bytes+1);
   if ((x >= text_area_w) || (y >= text_area_h))
     return;
   text_curs_x =  text_area_x + x;
@@ -393,9 +393,9 @@ void text_cursor_set_vis(uint8_t* arg_bytes, uint16_t sz, bool first_data)
 void text_area_define(uint8_t* arg_bytes, uint16_t sz, bool first_data)
 {
   text_curs_x = text_area_x = *(arg_bytes+0);
-  text_curs_y = text_area_y = *(arg_bytes+1);
-  text_area_w = *(arg_bytes+2);
-  text_area_h = *(arg_bytes+3);
+  text_curs_y = text_area_y = *(uint16_t*)(arg_bytes+1);
+  text_area_w = *(arg_bytes+3);
+  text_area_h = *(uint16_t*)(arg_bytes+4);
 }
 // ----------------------------------------------------------------------------
 // Set current bg/fg colors (rgb222) for text print, screen clear.
@@ -445,7 +445,7 @@ void text_scroll_h(uint8_t* arg_bytes, uint16_t sz, bool first_data)
 //
 void text_scroll_v(uint8_t* arg_bytes, uint16_t sz, bool first_data)
 {
-  int lines_displacement = *(int8_t*)arg_bytes;
+  int lines_displacement = *(int16_t*)arg_bytes;
   int bh,sy,dy,by,sx0,dx0;
   if(!lines_displacement)
     return;
@@ -669,15 +669,15 @@ void text_init(void)
   command_init(TEXT_CURSOR_SET_VIS,   1,      text_cursor_set_vis);
   command_init(TEXT_CURSOR_SET_BLINK, 1,      text_cursor_set_blink);
   command_init(TEXT_CURSOR_RESET,     0,      text_cursor_reset);
-  command_init(TEXT_AREA_DEFINE,      4,      text_area_define);
+  command_init(TEXT_AREA_DEFINE,      6,      text_area_define);
   command_init(TEXT_COLOR_SET,        2,      text_color_set);
   command_init(TEXT_CLEAR,            0,      text_clear);
   command_init(TEXT_HOME,             0,      text_home);
-  command_init(TEXT_GOTOXY,           2,      text_gotoxy);
+  command_init(TEXT_GOTOXY,           3,      text_gotoxy);
   command_init(TEXT_PUTC,             1,      text_putc);
   command_init(TEXT_PRINTC,           1,      text_printc);
   command_init(TEXT_SCROLL_H,         1,      text_scroll_h);
-  command_init(TEXT_SCROLL_V,         1,      text_scroll_v);
+  command_init(TEXT_SCROLL_V,         2,      text_scroll_v);
   command_init(TEXT_FONT_RESET,       0,      text_font_reset);
   command_init(TEXT_FONT_SET,         1,      text_font_set);
   command_init(TEXT_TEST,             0,      text_test);
