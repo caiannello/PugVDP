@@ -40,7 +40,7 @@ Text display mode:
 
 ### Importing new fonts
 
-`util/conv/` is the utility used to convert font images and palettes to C source for inclusion into the PugVDP sourcecode. Fonts can also be reprogrammed by the host CPU, as shown in the included assembly-language demo for Motorola MC6809-compatible CPU's.
+`util/conv/` is the utility used to convert font images and palettes to C source for inclusion into the PugVDP sourcecode. Fonts can also be reprogrammed by the host CPU, as shown in the included assembly-language demo for Motorola MC6809-compatible CPU's, linked below.
 
 ### Semigraphics demos
 
@@ -94,6 +94,6 @@ GPIO assignments are as follows:
 
 See src/pugvdp/commands.h for command list and video modes. Currently, only the text/semigraphics mode is implemented, but I hope to add bitmap modes, tile layers, and sprites!
 
-### Demo code for MC6309 CPU
+### Demo code for MC6809 CPU
 
 `/src/MC6809_demo/PUGVDP_DEMO.ASM`
