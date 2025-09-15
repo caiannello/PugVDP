@@ -45,7 +45,7 @@ Text display mode:
 
 In the doc folder are images of the built-in fonts. (No actual docs are yet in there, though.) There's some animated gifs in the media folder demonstrating semigraphics, and the tool used to produce them from PNG files is in `util/glyph art`. Some example outputs are in `util/glyph_art/output` .
 
-**This is an animated gif, showing an image approximated by various fonts in semigraphics modes:**
+**This is an animated gif showing how an image can by represented by various fonts in text mode:**
 
 <img src="https://github.com/caiannello/PugVDP/blob/main/media/torii_semigraphics_8x8_8x4_8x2_8x1_4x2.gif?raw=true" width="640" height="480" />
 
