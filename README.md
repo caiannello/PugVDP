@@ -24,17 +24,17 @@
 ### Current Features:
 
 648x480 display via DVI/HDMI 
-Text display mode:
-	Each character cell has configurable background/foreground color (64 colors - RGB222). IBM-style cursor with adjustable height, visibility, and blink rate. Font is reprogrammable by the host CPU at runtime.	
-	**there are six built-in fonts:**
-
-	-	8x16 IBM VGA (80 cols x 30 rows)
-	-	8x16 ASCII + Semigraphics
-	-	8x8	 IBM CGA (80 cols x 60 rows)
-	-	8x8  ASCII + Semigraphics
-	-	8x4  semigraphics only (80 cols x 120 rows)
-	-	8x1  semigraphics only (80 cols x 480 rows)	
-
+	- Text display mode:
+		- 64 FG & BG colors per each character cell (RGB222). 
+		- IBM-style cursor with adjustable height, visibility, and blink rate. 
+		- Font is reprogrammable by the host CPU at runtime.	
+		- Six built-in fonts:
+			-	8x16 IBM VGA (80 cols x 30 rows)
+			-	8x16 ASCII + Semigraphics
+			-	8x8	 IBM CGA (80 cols x 60 rows)
+			-	8x8  ASCII + Semigraphics
+			-	8x4  semigraphics only (80 cols x 120 rows)
+			-	8x1  semigraphics only (80 cols x 480 rows)	
 
 <img src="https://github.com/caiannello/PugVDP/blob/main/media/lorem.png?raw=true" width="640" height="480" />
 <img src="https://github.com/caiannello/PugVDP/blob/main/media/multicolor.png?raw=true" width="640" height="480" />
