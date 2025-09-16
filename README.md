@@ -25,7 +25,8 @@
 
 648x480 display via DVI/HDMI 
 Text display mode:
-	Each character cell has configurable background/foreground color (64 colors - RGB222). IBM-style cursor with adjustable height, visibility, and blink rate. The font can be reprogrammed by the host at runtime, and **there are six built-in fonts:**
+	Each character cell has configurable background/foreground color (64 colors - RGB222). IBM-style cursor with adjustable height, visibility, and blink rate. 
+	**there are six built-in fonts:**
 
 	-	8x16 IBM VGA (80 cols x 30 rows)
 	-	8x16 ASCII + Semigraphics
@@ -95,5 +96,4 @@ GPIO assignments are as follows:
 See src/pugvdp/commands.h for command list and video modes. Currently, only the text/semigraphics mode is implemented, but I hope to add bitmap modes, tile layers, and sprites!
 
 ### Demo code for MC6809 CPU
-
-`/src/MC6809_demo/PUGVDP_DEMO.ASM`
+An assembly-language demo for Motorola MC6809-compatible CPU's is included at `/src/MC6809_demo/PUGVDP_DEMO.ASM`.  It shows font reprogramming, text output in various colors, setting/scrolling active text area, and the ironman picture in three progressively finer fonts.
