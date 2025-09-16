@@ -25,7 +25,7 @@
 
 648x480 display via DVI/HDMI 
 Text display mode:
-	Each character cell has configurable background/foreground color (64 colors - RGB222). IBM-style cursor with adjustable height, visibility, and blink rate. 
+	Each character cell has configurable background/foreground color (64 colors - RGB222). IBM-style cursor with adjustable height, visibility, and blink rate. Font is reprogrammable by the host CPU at runtime.	
 	**there are six built-in fonts:**
 
 	-	8x16 IBM VGA (80 cols x 30 rows)
@@ -41,7 +41,7 @@ Text display mode:
 
 ### Importing new fonts
 
-`util/conv/` is the utility used to convert font images and palettes to C source for inclusion into the PugVDP sourcecode. Fonts can also be reprogrammed by the host CPU, as shown in the included assembly-language demo for Motorola MC6809-compatible CPU's, linked below.
+`util/conv/` is the utility used to convert font images and palettes to C source for inclusion into the PugVDP sourcecode. 
 
 ### Semigraphics demos
 
