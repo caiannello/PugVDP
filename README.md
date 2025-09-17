@@ -63,7 +63,10 @@ Also, the Pi Pico 2 adds some very helpful hardware support (called HSTX) for ge
 Note, the Raspberry pi pico SDK must be installed, per their instructions. In my case, 
 and as shown in the example below, mine is in `/home/user/pico-sdk`. I have incorporated portions of Luke's project directly into this repo, which is probably bad practice. I hope to make everything cleaner and more modular in the future, but in the meantime, I can't credit Luke enough!
 
-	cd PugVDP/src/build
+	
+	cd PugVDP/src/
+	mkdir build
+	cd build
 	cmake --fresh  -DPICO_SDK_PATH=/home/user/pico-sdk -DPICO_PLATFORM=rp2350 -DPICO_BOARD=adafruit_feather_rp2350 -DPICO_COPY_TO_RAM=1 -DDVI_DEFAULT_SERIAL_CONFIG=pico_sock_cfg ..
 	make
 

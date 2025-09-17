@@ -306,7 +306,7 @@ void text_gotoxy(uint8_t* arg_bytes, uint16_t sz, bool first_data)
 // ----------------------------------------------------------------------------
 void text_home(uint8_t* arg_bytes, uint16_t sz, bool first_data)
 {
-  text_gotoxy((uint8_t*)"\x00\x00",2,true);
+  text_gotoxy((uint8_t*)"\x00\x00\x00",3,true);
 }
 // ----------------------------------------------------------------------------
 // Resets font to defaults
