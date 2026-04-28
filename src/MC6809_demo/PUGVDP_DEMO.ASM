@@ -1,11 +1,11 @@
 ;------------------------------------------------------------------------------
-; PROJECT: VIA TEST
+; PROJECT: PUGVDP TEST
 ; VERSION: 0.0.1
-;    FILE: VIA_TEST.ASM
+;    FILE: PUGVDP_DEMO.ASM
 ;  AUTHOR: CRAIG IANNELLO, PUGBUTT.COM
 ;
 ; DESCRIPTION: 
-;   EXPERIMENTS WITH 65C22S VIA AND CONNECTED ATMEGA328PB
+;   EXPERIMENTS WITH RP2350 HDMI OUTPUT FOR RETROCOMPUTER
 ;
 ;------------------------------------------------------------------------------
     INCLUDE DEFINES.D           ; COMMON DEFINITIONS
@@ -24,16 +24,15 @@ ENTRYPOINT
     STA  CUR_ROWS
     LDA  #TEXT_COLOR_SET
     STA  PICO_R0
-    LDA  #%00010000 ; dark red
+    LDA  #%00010000 ; Text background very dark red
     STA  PICO_R1
-    LDA  #%00111000 ; amber
+    LDA  #%00111000 ; Foreground bright amber
     STA  PICO_R1    
     JMP  INIT
 ;------------------------------------------------------------------------------
 ; VARS
 ;------------------------------------------------------------------------------
 MYBUF       RMB  64     ; STRING BUF
-; USED IN TS_TO_DATE
 TMP64       RMB  8
 TMP16_0     RMB  2
 TMP16_1     RMB  2
